@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="WorkerItemRenderSkin" width="455" height="146" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="gui_shop_item_slot_png"/>
+	<e:Image id="iconSp" x="17" y="27" source="helper_angel_png" width="100" height="100"/>
+	<e:BitmapLabel id="soilAddTF" x="192" y="22" font="fontWhite_fnt" text="+1" scaleX="0.65" scaleY="0.65"/>
+	<e:BitmapLabel id="fpsAddTF" scaleY="0.65" y="65" text="FPS:+1" font="fontWhite_fnt" scaleX="0.65" x="142"/>
+	<e:BitmapLabel id="fpsCostTF" scaleY="0.65" y="102" text="P:1000" font="fontRed_fnt" scaleX="0.65" x="142"/>
+	<e:BitmapLabel id="gemCostTF" scaleY="0.65" text="10" y="107" font="fontRed_fnt" scaleX="0.65" x="392"/>
+	<e:BitmapLabel id="soilCostTF" scaleY="0.65" text="1000" y="107" font="fontRed_fnt" scaleX="0.65" horizontalCenter="109.625"/>
+	<e:Button id="buyBtn" x="298" y="13" width="142" height="55">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_buy_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image id="getedSp" source="equip_png" x="296" y="44" width="142" height="55"/>
+	<e:Image id="soilIcon" source="box_soil_01_png" x="139" y="14"/>
+	<e:Image id="costSoilIcon" y="72" source="box_soil_01_png" x="321" width="34" height="34"/>
+	<e:Image id="gemCostIcon" source="rubies_0_png" y="71" width="20" height="35" horizontalCenter="178.5"/>
+</e:Skin>

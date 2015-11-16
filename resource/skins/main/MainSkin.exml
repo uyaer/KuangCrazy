@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="MainSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="mapBg" left="0" right="0" top="0" bottom="0" source="soil_01_png"/>
+	<e:Group id="pickerGroup" left="0" right="0" top="0" bottom="0" locked="true"/>
+	<e:Image source="gui_mainscreen_back_top_png" scale9Grid="5,8,36,19" height="135" width="640"/>
+	<e:Image source="gui_mainscreen_back_bottom_png" scale9Grid="5,33,36,17" width="640" height="241" bottom="0"/>
+	<e:Button id="shopBtn" x="11" bottom="9" width="142" height="131">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_shop_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="honorBtn" x="488" bottom="9" width="143" height="131">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_achievement_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="musicBtn" y="13" x="526">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_sfx_on_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:BitmapLabel text="POWER/S" font="fontWhite_fnt" horizontalCenter="2.5" bottom="83"/>
+	<e:BitmapLabel id="powerAddTF" text="0" font="fontWhite_fnt" horizontalCenter="-0.5" bottom="35"/>
+	<e:BitmapLabel horizontalCenter="0" font="fontWhite_fnt" text="POWER:" x="10" top="16"/>
+	<e:BitmapLabel id="pwerTF" horizontalCenter="0" top="56" text="0" font="fontWhite_fnt" x="20" y="10"/>
+	<e:Group width="640" height="71" x="0" bottom="146"/>
+</e:Skin>

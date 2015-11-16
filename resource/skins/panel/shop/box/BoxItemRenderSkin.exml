@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="BoxItemRenderSkin" width="455" height="146" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="gui_shop_item_slot_png"/>
+	<e:BitmapLabel scaleY="0.65" y="13" text="damage:1" id="hurtTF" font="fontWhite_fnt" scaleX="0.65" x="142" width="228" height="122"/>
+	<e:Image id="iconSp" x="17" y="27" width="100" height="100" source="chest_png"/>
+	<e:BitmapLabel id="soilCostTF" scaleY="0.65" y="98" text="P:1000" font="fontRed_fnt" scaleX="0.65" x="142"/>
+	<e:Button id="buyBtn" x="297" y="50" width="142" height="55">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_buy_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+</e:Skin>

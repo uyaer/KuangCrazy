@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="ShopPanelSkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="gui_shop_back_png" x="71" y="76" scale9Grid="57,125,7,21" width="518" height="811"/>
+	<e:Button id="closeBtn" x="508" y="102">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_close_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:RadioButton id="tab1" x="101" y="113" groupName="tab">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_picks_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:RadioButton>
+	<e:RadioButton id="tab2" y="113" x="206" groupName="tab">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_helpers_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:RadioButton>
+	<e:RadioButton id="tab3" y="113" x="312" groupName="tab">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_soils_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:RadioButton>
+	<e:RadioButton id="tab4" y="113" x="417" groupName="tab">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_chest_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:RadioButton>
+	<e:Scroller width="467" height="641" x="97" y="220">
+			<e:DataGroup id="list" >
+				<e:ArrayCollection>
+					<e:Array>
+						<e:Object label="数据1"/>
+						<e:Object label="数据2"/>
+						<e:Object label="数据3"/>
+						<e:Object label="null"/>
+						<e:Object label="null"/>
+						<e:Object label="null"/>
+					</e:Array>
+				</e:ArrayCollection>
+				<e:layout>
+					<e:VerticalLayout horizontalAlign="center" gap="16"/>
+				</e:layout>
+			</e:DataGroup>
+	</e:Scroller>
+	</e:Skin>
