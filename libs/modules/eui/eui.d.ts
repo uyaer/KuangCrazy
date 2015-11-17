@@ -1856,20 +1856,6 @@ declare module eui.sys {
     function implementUIComponent(descendant: any, base: any, isContainer?: boolean): void;
 }
 declare module eui {
-    /**
-     * @language en_US
-     * BitmapLabel is one line or multiline uneditable BitmapText
-     * @version Egret 2.5.3
-     * @version eui 1.0
-     * @platform Web,Native
-     */
-    /**
-     * @language zh_CN
-     * BitmapLabel 组件是一行或多行不可编辑的位图文本
-     * @version Egret 2.5.3
-     * @version eui 1.0
-     * @platform Web,Native
-     */
     class BitmapLabel extends egret.BitmapText implements UIComponent, IDisplayText {
         constructor(text?: string);
         /**
@@ -3200,7 +3186,7 @@ declare module eui {
          * @version eui 1.0
          * @platform Web,Native
          */
-        constructor(name: string, overrides?: IOverride[]);
+        constructor(name: string, overrides: IOverride[]);
         /**
          * @language en_US
          * The name of the view state.
@@ -4500,42 +4486,6 @@ declare module eui {
          * @private
          */
         private _widthConstraint;
-        /**
-        * @private
-        *
-        * @param stage
-        * @param nestLevel
-        */
-        $onAddToStage(stage: egret.Stage, nestLevel: number): void;
-        /**
-         * @private
-         *
-         */
-        $onRemoveFromStage(): void;
-        private $prompt;
-        /**
-         * @language en_US
-         * When the property of the text is empty, it will show the defalut string.
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 当text属性为空字符串时要显示的文本内容。
-         * 先创建文本控件时将显示提示文本。控件获得焦点时或控件的 text 属性为非空字符串时，提示文本将消失。
-         * 控件失去焦点时提示文本将重新显示，但仅当未输入文本时（如果文本字段的值为空字符串）。<p/>
-         * 对于文本控件，如果用户输入文本，但随后又将其删除，则控件失去焦点后，提示文本将重新显示。
-         * 您还可以通过编程方式将文本控件的 text 属性设置为空字符串使提示文本重新显示。
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        prompt: string;
-        /**
-         * @private
-         */
-        private showPrompt();
         /**
          * @private
          * UIComponentImpl 定义的所有变量请不要添加任何初始值，必须统一在此处初始化。
@@ -8426,158 +8376,6 @@ declare module eui {
          * 单选按钮从显示列表移除
          */
         private removedHandler(event);
-    }
-}
-declare module eui {
-    /**
-     * @language en_US
-     * The Rect component is a rectangular shape. It can be touched.
-     * @version Egret 2.5.5
-     * @version eui 1.0
-     * @platform Web,Native
-     */
-    /**
-     * @language zh_CN
-     * Rect 组件矩形绘图元素。此组件可响应鼠标事件。
-     * @version Egret 2.5.5
-     * @version eui 1.0
-     * @platform Web,Native
-     */
-    class Rect extends Component {
-        constructor(width?: number, height?: number, fillColor?: number);
-        /**
-         * @private
-         */
-        $graphics: egret.Graphics;
-        graphics: egret.Graphics;
-        /**
-         * @private
-         */
-        $measureContentBounds(bounds: egret.Rectangle): void;
-        /**
-         * @private
-         */
-        $render(context: egret.sys.RenderContext): void;
-        private _fillColor;
-        /**
-         * @language en_US
-         * Fill color
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 填充颜色
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        fillColor: number;
-        private $fillAlpha;
-        /**
-         * @language en_US
-         * Fill alpha
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 填充透明度,默认值为1。
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        fillAlpha: number;
-        private $strokeColor;
-        /**
-         * @language en_US
-         * The line's color inside the rect border. Caution: when the strokeWeight is 0, a line is not drawn
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 边框颜色,注意：当 strokeWeight 为 0 时，不显示边框。
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        strokeColor: number;
-        private _strokeAlpha;
-        /**
-         * @language en_US
-         * The line's alpha inside the rect border. Caution: when the strokeWeight is 0, a line is not drawn
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 边框透明度,注意：当 strokeWeight 为0时，不显示边框。
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        strokeAlpha: number;
-        private $strokeWeight;
-        /**
-         * @language en_US
-         * The line's thickness inside the rect border. Caution: when the strokeWeight is 0, a line is not drawn
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 边框粗细(像素),注意：当 strokeWeight 为 0 时，不显示边框。
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        strokeWeight: number;
-        private $ellipseWidth;
-        /**
-         * @language en_US
-         * Width used to draw an ellipse with rounded corners (in pixels).
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 用于绘制圆角的椭圆的宽度(以像素为单位)
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        ellipseWidth: number;
-        private $ellipseHeight;
-        /**
-         * @language en_US
-         * Height used to draw an ellipse with rounded corners (in pixels). If no value is specified, the default value matches the value of the ellipseWidth parameter.
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 用于绘制圆角的椭圆的高度 (以像素为单位)。如果未指定值，则默认值与为 ellipseWidth 参数提供的值相匹配。
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        ellipseHeight: number;
-        /**
-         * @copy eui.UIComponent#updateDisplayList
-         *
-         * @version Egret 2.5.5
-         * @version eui 1.0
-         * @platform Web,Native
-         */
-        protected updateDisplayList(unscaledWidth: number, unscaledHeight: number): void;
     }
 }
 declare module eui {

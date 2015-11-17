@@ -52,11 +52,11 @@ declare class MainSkin extends eui.Skin{
 }
 declare class SoilItemSkin extends eui.Skin{
 }
-declare class ShopPanelSkin extends eui.Skin{
-}
 declare class BoxItemRenderSkin extends eui.Skin{
 }
 declare class PickItemRenderSkin extends eui.Skin{
+}
+declare class ShopPanelSkin extends eui.Skin{
 }
 declare class SoilItemRenderSkin extends eui.Skin{
 }
