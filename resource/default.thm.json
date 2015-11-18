@@ -29,9 +29,9 @@
     "resource/skins/main/GemItemSkin.exml",
     "resource/skins/main/MainSkin.exml",
     "resource/skins/main/SoilItemSkin.exml",
+    "resource/skins/panel/shop/ShopPanelSkin.exml",
     "resource/skins/panel/shop/box/BoxItemRenderSkin.exml",
     "resource/skins/panel/shop/pick/PickItemRenderSkin.exml",
-    "resource/skins/panel/shop/ShopPanelSkin.exml",
     "resource/skins/panel/shop/soil/SoilItemRenderSkin.exml",
     "resource/skins/panel/shop/work/WorkerItemRenderSkin.exml"
   ]

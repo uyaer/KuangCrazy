@@ -5,7 +5,7 @@ class ShopPanel extends PanelBase {
         super();
 
         this.itemRenderArr = [PickItemRenderer, WorkerItemRenderer,
-            SoilItemRenderer,BoxItemRenderer];
+            SoilItemRenderer, BoxItemRenderer];
 
         this.skinName = new ShopPanelSkin();
     }
@@ -54,6 +54,11 @@ class ShopPanel extends PanelBase {
     private changeShopList(index:number) {
         this.list.useVirtualLayout = true;
         this.list.itemRenderer = this.itemRenderArr[index];
-        this.list.dataProvider = new eui.ArrayCollection([1, 2, 34, 5, 61, 2, 3, 4, 5, 6]);
+        var arr;
+        if (index == 0)arr = DataManager.instance.getShopPickDataArr();
+        else if (index == 1)arr = DataManager.instance.getShopWorkerDataArr();
+        else if (index == 2)arr = DataManager.instance.getShopMapDataArr();
+        else if (index == 3)arr = DataManager.instance.getShopBoxDataArr();
+        this.list.dataProvider = new eui.ArrayCollection(arr);
     }
 }

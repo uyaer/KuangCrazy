@@ -1,5 +1,5 @@
 <root>
-  <app layoutGap="1" useExtension="true" cutImage="true" layoutMath="2" autoLayout="true" freeSize="true" canvasSize="1023,756"/>
+  <app layoutGap="1" useExtension="true" cutImage="true" layoutMath="2" autoLayout="true" freeSize="true" canvasSize="1023,700"/>
   <items>
     <item label="box_soil_01" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/box_soil_01.png"/>
     <item label="box_soil_02" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/box_soil_02.png"/>
@@ -16,8 +16,6 @@
     <item label="btn_helpers" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_helpers.png"/>
     <item label="btn_moregames" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_moregames.png"/>
     <item label="btn_picks" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_picks.png"/>
-    <item label="btn_scroll_down" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_scroll_down.png"/>
-    <item label="btn_scroll_up" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_scroll_up.png"/>
     <item label="btn_sfx_off" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_sfx_off.png"/>
     <item label="btn_sfx_on" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_sfx_on.png"/>
     <item label="btn_shop" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_shop.png"/>
@@ -53,5 +51,6 @@
     <item label="rubies_4" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/rubies_4.png"/>
     <item label="gui_shop_item_slot" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/gui_shop_item_slot.png"/>
     <item label="btn_close" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/btn_close.png"/>
+    <item label="coin" file="/Users/hc/Documents/EgretProjects/KuangCrazy/原始资源/ui/coin.png"/>
   </items>
 </root>

@@ -2,10 +2,10 @@
 <e:Skin class="PickItemRenderSkin" width="455" height="146" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="gui_shop_item_slot_png"/>
 	<e:Image id="iconSp" source="pick_0_png" x="18" y="26" width="100" height="100"/>
-	<e:BitmapLabel id="hurtTF" x="140" y="17" font="fontWhite_fnt" text="damage:1" scaleX="0.65" scaleY="0.65"/>
-	<e:BitmapLabel id="gemTF" scaleY="0.65" y="91" text="25" font="fontWhite_fnt" scaleX="0.65" x="175"/>
-	<e:BitmapLabel id="powerTF" scaleY="0.65" y="51" text="P:1000000" font="fontRed_fnt" scaleX="0.65" x="140"/>
-	<e:Image id="gemSp" source="rubies_0_png" x="140" y="82"/>
+	<e:BitmapLabel id="outCoinTF" x="178" y="13" font="fontWhite_fnt" text="+1" scaleX="0.65" scaleY="0.65"/>
+	<e:BitmapLabel id="gemTF" scaleY="0.65" y="97" text="25" font="fontWhite_fnt" scaleX="0.65" x="176"/>
+	<e:BitmapLabel id="costCoinTF" scaleY="0.65" y="55" text="200000" font="fontRed_fnt" scaleX="0.65" x="176"/>
+	<e:Image id="gemSp" source="rubies_0_png" x="144" y="91" width="25" height="45"/>
 	<e:Button id="buyBtn" x="283" y="77">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
@@ -14,4 +14,6 @@
 		</e:skinName>
 	</e:Button>
 	<e:Image id="getedSp" source="equip_png" x="300" y="30" width="142" height="55"/>
+	<e:Image source="coin_png" x="142" y="13"/>
+	<e:Image y="56" source="coin_png" x="142"/>
 </e:Skin>

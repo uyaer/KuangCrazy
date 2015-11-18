@@ -3,4 +3,8 @@ class PickItemRenderer extends eui.ItemRenderer{
         super();
         this.skinName = new PickItemRenderSkin();
     }
+
+    protected dataChanged(){
+
+    }
 }

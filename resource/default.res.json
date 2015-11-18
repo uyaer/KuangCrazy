@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,soil_damage_1_png,soil_damage_2_png,soil_damage_3_png,soil_damage_4_png,soil_damage_5_png,ui_json,fire_json,fire_png,achievement_ogg,buy_ogg,crack_01_ogg,crack_02_ogg,crack_03_ogg,crack_04_ogg,crack_05_ogg,fireon_ogg,got_soil_ogg,pick_hit_ogg,soil_01_hit_ogg,soil_02_hit_ogg,soil_03_hit_ogg,soil_04_hit_ogg,soil_05_hit_ogg,soil_06_hit_ogg,soil_07_hit_ogg,soil_08_hit_ogg,soil_09_hit_ogg,swing_ogg,soil_01_png,fontRed_fnt,fontWhite_fnt",
+		"keys":"checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,soil_damage_1_png,soil_damage_2_png,soil_damage_3_png,soil_damage_4_png,soil_damage_5_png,ui_json,fire_json,fire_png,achievement_ogg,buy_ogg,crack_01_ogg,crack_02_ogg,crack_03_ogg,crack_04_ogg,crack_05_ogg,fireon_ogg,got_soil_ogg,pick_hit_ogg,soil_01_hit_ogg,soil_02_hit_ogg,soil_03_hit_ogg,soil_04_hit_ogg,soil_05_hit_ogg,soil_06_hit_ogg,soil_07_hit_ogg,soil_08_hit_ogg,soil_09_hit_ogg,swing_ogg,soil_01_png,fontRed_fnt,fontWhite_fnt,fontGreen_fnt",
 		"name":"preload"
 	}],
 	"resources":[
@@ -302,7 +302,7 @@
 	},
 	{
 		"name":"ui_json",
-		"subkeys":"box_soil_01_png,box_soil_02_png,box_soil_03_png,box_soil_04_png,box_soil_05_png,box_soil_06_png,box_soil_07_png,box_soil_08_png,box_soil_09_png,btn_achievement_png,btn_buy_png,btn_chest_png,btn_close_png,btn_helpers_png,btn_moregames_png,btn_picks_png,btn_scroll_down_png,btn_scroll_up_png,btn_sfx_off_png,btn_sfx_on_png,btn_shop_png,btn_soils_png,chest_open_png,chest_png,equip_png,gui_mainscreen_back_bottom_png,gui_mainscreen_back_top_png,gui_shop_back_png,gui_shop_item_slot_png,helper_angel_png,helper_cave_png,helper_demon_png,helper_dwarf_png,helper_forest_spirit_png,helper_mole_png,helper_robo_png,helper_salamander_png,helper_woodpaker_png,helper_yeti_png,pick_0_png,pick_1_png,pick_2_png,pick_3_png,pick_4_png,pick_5_png,pick_6_png,pick_7_png,rubies_0_png,rubies_1_png,rubies_2_png,rubies_3_png,rubies_4_png",
+		"subkeys":"box_soil_01_png,box_soil_02_png,box_soil_03_png,box_soil_04_png,box_soil_05_png,box_soil_06_png,box_soil_07_png,box_soil_08_png,box_soil_09_png,btn_achievement_png,btn_buy_png,btn_chest_png,btn_close_png,btn_helpers_png,btn_moregames_png,btn_picks_png,btn_sfx_off_png,btn_sfx_on_png,btn_shop_png,btn_soils_png,chest_open_png,chest_png,coin_png,equip_png,gui_mainscreen_back_bottom_png,gui_mainscreen_back_top_png,gui_shop_back_png,gui_shop_item_slot_png,helper_angel_png,helper_cave_png,helper_demon_png,helper_dwarf_png,helper_forest_spirit_png,helper_mole_png,helper_robo_png,helper_salamander_png,helper_woodpaker_png,helper_yeti_png,pick_0_png,pick_1_png,pick_2_png,pick_3_png,pick_4_png,pick_5_png,pick_6_png,pick_7_png,rubies_0_png,rubies_1_png,rubies_2_png,rubies_3_png,rubies_4_png",
 		"type":"sheet",
 		"url":"assets/ui.json"
 	},
@@ -315,5 +315,10 @@
 		"name":"fontWhite_fnt",
 		"type":"font",
 		"url":"assets/fonts/fontWhite.fnt"
+	},
+	{
+		"name":"fontGreen_fnt",
+		"type":"font",
+		"url":"assets/fonts/fontGreen.fnt"
 	}]
 }

@@ -1,10 +1,13 @@
+/**
+ * 铁锤事件
+ */
 class PickerVo {
     /**
-     * ���ӱ��
+     * 锤子编号
      */
     public id:number;
     /**
-     * �ȼ�
+     * 等级
      */
     public level:number;
 
@@ -14,33 +17,66 @@ class PickerVo {
         this.id = id;
         this._data = DataManager.instance.getPickDataById(id);
 
+        this._costCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel,this.minLevel,this._data["costCoinBase"],this._data["costCoinRate"]);
+        this._costGemMap = DataManager.instance.getGrowDataArr(this.maxLevel,this.minLevel,this._data["costGemBase"],this._data["costGemRate"]);
+        this._outCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel,this.minLevel,this._data["outCoinBase"],this._data["outCoinRate"]);
     }
 
-    private _costCoinArr:number[];
-    private _costSoilArr:number[];
-    private _costGemArr:number[];
+    private _costCoinMap:HashMap<number,number>;
+    private _costGemMap:HashMap<number,number>;
+    private _outCoinMap:HashMap<number,number>;
 
     /**
-     * ���Ľ��
+     * 最小等级
+     * @returns {number}
+     */
+    public get minLevel(){
+        return this._data["minLevel"];
+    }
+    /**
+     * 最大等级
+     * @returns {number}
+     */
+    public get maxLevel(){
+        return this._data["maxLevel"];
+    }
+
+    /**
+     * 消耗金币
      * @returns {number}
      */
     public get costCoin() {
-        return this._costCoinArr[this.level];
+        return this._costCoinMap.get(this.level);
     }
 
     /**
-     * ��������
-     * @returns {number}
-     */
-    public get costSoil() {
-        return this._costCoinArr[this.level];
-    }
-
-    /**
-     * ���ı�ʯ
+     * 消耗宝石
      * @returns {number}
      */
     public get costGem() {
-        return this._costCoinArr[this.level];
+        return this._costGemMap.get(this.level);
+    }
+
+    /**
+     * 消耗宝石的种类
+     * @returns {number}
+     */
+    public get costGemType(){
+        return this._data["costGemType"];
+    }
+
+    /**
+     * 获得金币
+     * @returns {number}
+     */
+    public get outCoin() {
+        return this._outCoinMap.get(this.level);
+    }
+    /**
+     * 获得单次泥土数量上限
+     * @returns {number}
+     */
+    public get outSoilMax() {
+        return 1 + Math.floor(this.level / 10);
     }
 }
