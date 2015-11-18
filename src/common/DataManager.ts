@@ -38,4 +38,19 @@ class DataManager {
 
     }
 
+
+    /**
+     * 获取铁锤的数据
+     * @param id
+     */
+    public getPickDataById(id:number) {
+        var arr = RES.getRes("data_json")["pick"];
+        for (var i = 0; i < arr.length; i++) {
+            var data = arr[i];
+            if (data["id"] == id) {
+                return data;
+            }
+        }
+        return null;
+    }
 }
