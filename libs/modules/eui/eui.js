@@ -1319,7 +1319,9 @@ var eui;
                 if (this.invalidateDisplayListFlag) {
                     this.validateDisplayList();
                 }
-                if (this.invalidatePropertiesFlag || this.invalidateSizeFlag || this.invalidateDisplayListFlag) {
+                if (this.invalidatePropertiesFlag ||
+                    this.invalidateSizeFlag ||
+                    this.invalidateDisplayListFlag) {
                     this.attachListeners();
                 }
                 else {
@@ -2286,7 +2288,8 @@ var eui;
                 }
                 var preferredW = this.getPreferredUWidth();
                 var preferredH = this.getPreferredUHeight();
-                if (preferredW !== values[18 /* oldPreferWidth */] || preferredH !== values[19 /* oldPreferHeight */]) {
+                if (preferredW !== values[18 /* oldPreferWidth */] ||
+                    preferredH !== values[19 /* oldPreferHeight */]) {
                     values[18 /* oldPreferWidth */] = preferredW;
                     values[19 /* oldPreferHeight */] = preferredH;
                     changed = true;
@@ -2463,7 +2466,8 @@ var eui;
              */
             p.getPreferredUWidth = function () {
                 var values = this.$UIComponent;
-                return isNaN(values[8 /* explicitWidth */]) ? values[16 /* measuredWidth */] : values[8 /* explicitWidth */];
+                return isNaN(values[8 /* explicitWidth */]) ?
+                    values[16 /* measuredWidth */] : values[8 /* explicitWidth */];
             };
             /**
              * @private
@@ -2472,7 +2476,8 @@ var eui;
              */
             p.getPreferredUHeight = function () {
                 var values = this.$UIComponent;
-                return isNaN(values[9 /* explicitHeight */]) ? values[17 /* measuredHeight */] : values[9 /* explicitHeight */];
+                return isNaN(values[9 /* explicitHeight */]) ?
+                    values[17 /* measuredHeight */] : values[9 /* explicitHeight */];
             };
             /**
              * @private
@@ -2701,10 +2706,52 @@ var eui;
         sys.implementUIComponent = implementUIComponent;
     })(sys = eui.sys || (eui.sys = {}));
 })(eui || (eui = {}));
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
 /// <reference path="../core/uicomponent.ts" />
 var eui;
 (function (eui) {
     var UIImpl = eui.sys.UIComponentImpl;
+    /**
+     * @language en_US
+     * BitmapLabel is one line or multiline uneditable BitmapText
+     * @version Egret 2.5.3
+     * @version eui 1.0
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * BitmapLabel 组件是一行或多行不可编辑的位图文本
+     * @version Egret 2.5.3
+     * @version eui 1.0
+     * @platform Web,Native
+     */
     var BitmapLabel = (function (_super) {
         __extends(BitmapLabel, _super);
         function BitmapLabel(text) {
@@ -3039,6 +3086,7 @@ var eui;
 //
 //////////////////////////////////////////////////////////////////////////////////////
 /// <reference path="../core/uicomponent.ts" />
+/// <reference path="../utils/registerproperty.ts" />
 var eui;
 (function (eui) {
     /**
@@ -3502,7 +3550,8 @@ var eui;
              */
             ,function () {
                 var values = this.$Component;
-                return values[2 /* explicitState */] ? values[2 /* explicitState */] : this.getCurrentState();
+                return values[2 /* explicitState */] ?
+                    values[2 /* explicitState */] : this.getCurrentState();
             }
             ,function (value) {
                 var values = this.$Component;
@@ -4414,6 +4463,7 @@ var eui;
          * @platform Web,Native
          */
         function State(name, overrides) {
+            if (overrides === void 0) { overrides = []; }
             _super.call(this);
             this.name = name;
             this.overrides = overrides;
@@ -5398,7 +5448,8 @@ var eui;
              * @platform Web,Native
              */
             ,function () {
-                return this.$layout ? this.$layout.$useVirtualLayout : this.$DataGroup[0 /* useVirtualLayout */];
+                return this.$layout ? this.$layout.$useVirtualLayout :
+                    this.$DataGroup[0 /* useVirtualLayout */];
             }
             ,function (value) {
                 value = !!value;
@@ -5684,7 +5735,7 @@ var eui;
                         var indexToRenderer = this.$indexToRenderer;
                         var keys = Object.keys(indexToRenderer);
                         var length = keys.length;
-                        for (var i = 0; i < length; i) {
+                        for (var i = 0; i < length; i++) {
                             var index = +keys[i];
                             this.freeRendererByIndex(index);
                         }
@@ -6406,10 +6457,9 @@ var eui;
              * @private
              */
             this._widthConstraint = NaN;
+            this.$prompt = "";
             this.initializeUIValues();
-            //if egret
             this.type = egret.TextFieldType.INPUT;
-            //endif*/
         }
         var d = __define,c=EditableText;p=c.prototype;
         /**
@@ -6451,6 +6501,64 @@ var eui;
             return result;
         };
         /**
+        * @private
+        *
+        * @param stage
+        * @param nestLevel
+        */
+        p.$onAddToStage = function (stage, nestLevel) {
+            _super.prototype.$onAddToStage.call(this, stage, nestLevel);
+            this.addEventListener(egret.FocusEvent.FOCUS_IN, this.showPrompt, this);
+            this.addEventListener(egret.FocusEvent.FOCUS_OUT, this.showPrompt, this);
+        };
+        /**
+         * @private
+         *
+         */
+        p.$onRemoveFromStage = function () {
+            _super.prototype.$onRemoveFromStage.call(this);
+            this.removeEventListener(egret.FocusEvent.FOCUS_IN, this.showPrompt, this);
+            this.removeEventListener(egret.FocusEvent.FOCUS_OUT, this.showPrompt, this);
+        };
+        d(p, "prompt"
+            /**
+             * @language en_US
+             * When the property of the text is empty, it will show the defalut string.
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 当text属性为空字符串时要显示的文本内容。
+             * 先创建文本控件时将显示提示文本。控件获得焦点时或控件的 text 属性为非空字符串时，提示文本将消失。
+             * 控件失去焦点时提示文本将重新显示，但仅当未输入文本时（如果文本字段的值为空字符串）。<p/>
+             * 对于文本控件，如果用户输入文本，但随后又将其删除，则控件失去焦点后，提示文本将重新显示。
+             * 您还可以通过编程方式将文本控件的 text 属性设置为空字符串使提示文本重新显示。
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this.$prompt;
+            }
+            ,function (value) {
+                var oldPrompt = this.$prompt;
+                this.$prompt = value;
+                if (this.text == oldPrompt) {
+                    this.text = value;
+                }
+            }
+        );
+        /**
+         * @private
+         */
+        p.showPrompt = function () {
+            if (!this.text) {
+                this.text = this.prompt;
+            }
+        };
+        /**
          * @copy eui.Component#createChildren()
          *
          * @version Egret 2.4
@@ -6458,6 +6566,7 @@ var eui;
          * @platform Web,Native
          */
         p.createChildren = function () {
+            this.showPrompt();
         };
         /**
          * @copy eui.Component#childrenCreated()
@@ -7176,7 +7285,8 @@ var eui;
              */
             ,function () {
                 var values = this.$Range;
-                return values[6 /* valueChanged */] ? values[5 /* changedValue */] : values[4 /* value */];
+                return values[6 /* valueChanged */] ?
+                    values[5 /* changedValue */] : values[4 /* value */];
             }
             ,function (newValue) {
                 newValue = +newValue || 0;
@@ -7275,8 +7385,10 @@ var eui;
                 else
                     values[0 /* maximum */] = values[2 /* minimum */];
             }
-            if (values[6 /* valueChanged */] || values[1 /* maxChanged */] || values[3 /* minChanged */] || values[8 /* snapIntervalChanged */]) {
-                var currentValue = values[6 /* valueChanged */] ? values[5 /* changedValue */] : values[4 /* value */];
+            if (values[6 /* valueChanged */] || values[1 /* maxChanged */] ||
+                values[3 /* minChanged */] || values[8 /* snapIntervalChanged */]) {
+                var currentValue = values[6 /* valueChanged */] ?
+                    values[5 /* changedValue */] : values[4 /* value */];
                 values[6 /* valueChanged */] = false;
                 values[1 /* maxChanged */] = false;
                 values[3 /* minChanged */] = false;
@@ -7973,7 +8085,8 @@ var eui;
                     if (animation.isPlaying)
                         this.stopAnimation();
                     values[8 /* slideToValue */] = newValue;
-                    animation.duration = values[6 /* slideDuration */] * (Math.abs(values[7 /* pendingValue */] - values[8 /* slideToValue */]) / (rangeValues[0 /* maximum */] - rangeValues[2 /* minimum */]));
+                    animation.duration = values[6 /* slideDuration */] *
+                        (Math.abs(values[7 /* pendingValue */] - values[8 /* slideToValue */]) / (rangeValues[0 /* maximum */] - rangeValues[2 /* minimum */]));
                     animation.from = values[7 /* pendingValue */];
                     animation.to = values[8 /* slideToValue */];
                     eui.UIEvent.dispatchUIEvent(this, eui.UIEvent.CHANGE_START);
@@ -8945,13 +9058,16 @@ var eui;
          */
         p.getCurrentState = function () {
             var state = "up";
-            if (this._selected || this.touchCaptured) {
+            if (this.touchCaptured) {
                 state = "down";
             }
-            var selectedState = state + "AndSelected";
-            var skin = this.skin;
-            if (skin && skin.hasState(selectedState)) {
-                return selectedState;
+            if (this._selected) {
+                var selectedState = state + "AndSelected";
+                var skin = this.skin;
+                if (skin && skin.hasState(selectedState)) {
+                    return selectedState;
+                }
+                return state == "disabled" ? "disabled" : "down";
             }
             return state;
         };
@@ -9525,7 +9641,8 @@ var eui;
             }
             var values = this.$ListBase;
             if (dispatchChangeEvent)
-                values[4 /* dispatchChangeAfterSelection */] = (values[4 /* dispatchChangeAfterSelection */] || dispatchChangeEvent);
+                values[4 /* dispatchChangeAfterSelection */] =
+                    (values[4 /* dispatchChangeAfterSelection */] || dispatchChangeEvent);
             values[2 /* proposedSelectedIndex */] = value;
             this.invalidateProperties();
         };
@@ -9619,7 +9736,8 @@ var eui;
                 return;
             var values = this.$ListBase;
             if (dispatchChangeEvent)
-                values[4 /* dispatchChangeAfterSelection */] = (values[4 /* dispatchChangeAfterSelection */] || dispatchChangeEvent);
+                values[4 /* dispatchChangeAfterSelection */] =
+                    (values[4 /* dispatchChangeAfterSelection */] || dispatchChangeEvent);
             values[5 /* pendingSelectedItem */] = value;
             this.invalidateProperties();
         };
@@ -9653,13 +9771,17 @@ var eui;
             }
             if (values[1 /* requireSelectionChanged */]) {
                 values[1 /* requireSelectionChanged */] = false;
-                if (values[0 /* requireSelection */] && selectedIndex == ListBase.NO_SELECTION && dataProvider && dataProvider.length > 0) {
+                if (values[0 /* requireSelection */] &&
+                    selectedIndex == ListBase.NO_SELECTION &&
+                    dataProvider &&
+                    dataProvider.length > 0) {
                     values[2 /* proposedSelectedIndex */] = 0;
                 }
             }
             if (values[5 /* pendingSelectedItem */] !== undefined) {
                 if (dataProvider)
-                    values[2 /* proposedSelectedIndex */] = dataProvider.getItemIndex(values[5 /* pendingSelectedItem */]);
+                    values[2 /* proposedSelectedIndex */] =
+                        dataProvider.getItemIndex(values[5 /* pendingSelectedItem */]);
                 else
                     values[2 /* proposedSelectedIndex */] = ListBase.NO_SELECTION;
                 values[5 /* pendingSelectedItem */] = undefined;
@@ -9760,7 +9882,8 @@ var eui;
                 tmpProposedIndex = ListBase.NO_SELECTION;
             if (tmpProposedIndex > maxIndex)
                 tmpProposedIndex = maxIndex;
-            if (values[0 /* requireSelection */] && tmpProposedIndex == ListBase.NO_SELECTION && dataProvider && dataProvider.length > 0) {
+            if (values[0 /* requireSelection */] && tmpProposedIndex == ListBase.NO_SELECTION &&
+                dataProvider && dataProvider.length > 0) {
                 values[2 /* proposedSelectedIndex */] = ListBase.NO_PROPOSED_SELECTION;
                 values[4 /* dispatchChangeAfterSelection */] = false;
                 return false;
@@ -10299,7 +10422,8 @@ var eui;
         p.setSelectedIndices = function (value, dispatchChangeEvent) {
             var values = this.$ListBase;
             if (dispatchChangeEvent)
-                values[4 /* dispatchChangeAfterSelection */] = (values[4 /* dispatchChangeAfterSelection */] || dispatchChangeEvent);
+                values[4 /* dispatchChangeAfterSelection */] =
+                    (values[4 /* dispatchChangeAfterSelection */] || dispatchChangeEvent);
             if (value)
                 this._proposedSelectedIndices = value;
             else
@@ -11167,7 +11291,8 @@ var eui;
                 this.slideToValue = this.nearestValidValue(newValue, values[7 /* snapInterval */]);
                 if (this.slideToValue === this.animationValue)
                     return result;
-                var duration = this._slideDuration * (Math.abs(this.animationValue - this.slideToValue) / (values[0 /* maximum */] - values[2 /* minimum */]));
+                var duration = this._slideDuration *
+                    (Math.abs(this.animationValue - this.slideToValue) / (values[0 /* maximum */] - values[2 /* minimum */]));
                 animation.duration = duration === Infinity ? 0 : duration;
                 animation.from = this.animationValue;
                 animation.to = this.slideToValue;
@@ -11404,7 +11529,8 @@ var eui;
                 if (!this.$Component[3 /* enabled */]) {
                     return false;
                 }
-                return !this.$radioButtonGroup || this.$radioButtonGroup.$enabled;
+                return !this.$radioButtonGroup ||
+                    this.$radioButtonGroup.$enabled;
             }
             ,function (value) {
                 this.$setEnabled(value);
@@ -11862,7 +11988,9 @@ var eui;
              */
             ,function () {
                 if (this.selection) {
-                    return this.selection.value != null ? this.selection.value : this.selection.label;
+                    return this.selection.value != null ?
+                        this.selection.value :
+                        this.selection.label;
                 }
                 return null;
             }
@@ -11875,7 +12003,8 @@ var eui;
                 var n = this.numRadioButtons;
                 for (var i = 0; i < n; i++) {
                     var radioButton = this.radioButtons[i];
-                    if (radioButton.value == value || radioButton.label == value) {
+                    if (radioButton.value == value ||
+                        radioButton.label == value) {
                         this.changeSelection(i, false);
                         this._selectedValue = null;
                         eui.PropertyEvent.dispatchPropertyEvent(this, eui.PropertyEvent.PROPERTY_CHANGE, "selectedValue");
@@ -12037,6 +12166,304 @@ var eui;
     if (DEBUG) {
         egret.$markReadOnly(RadioButtonGroup, "numRadioButtons");
     }
+})(eui || (eui = {}));
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
+var eui;
+(function (eui) {
+    /**
+     * @language en_US
+     * The Rect component is a rectangular shape. It can be touched.
+     * @version Egret 2.5.5
+     * @version eui 1.0
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * Rect 组件矩形绘图元素。此组件可响应鼠标事件。
+     * @version Egret 2.5.5
+     * @version eui 1.0
+     * @platform Web,Native
+     */
+    var Rect = (function (_super) {
+        __extends(Rect, _super);
+        function Rect(width, height, fillColor) {
+            _super.call(this);
+            this._fillColor = 0x000000;
+            this.$fillAlpha = 1;
+            this.$strokeColor = 0x444444;
+            this._strokeAlpha = 1;
+            this.$strokeWeight = 0;
+            this.$ellipseWidth = 0;
+            this.$ellipseHeight = 0;
+            this.touchChildren = false;
+            this.$graphics = new egret.Graphics();
+            this.$graphics.$renderContext.$targetDisplay = this;
+            this.$renderRegion = new egret.sys.Region();
+            this.width = width;
+            this.height = height;
+            this.fillColor = fillColor;
+        }
+        var d = __define,c=Rect;p=c.prototype;
+        d(p, "graphics"
+            ,function () {
+                return this.$graphics;
+            }
+        );
+        /**
+         * @private
+         */
+        p.$measureContentBounds = function (bounds) {
+            if (this.$graphics) {
+                bounds.setTo(0, 0, this.width, this.height);
+            }
+        };
+        /**
+         * @private
+         */
+        p.$render = function (context) {
+            this.$graphics.$render(context);
+        };
+        d(p, "fillColor"
+            /**
+             * @language en_US
+             * Fill color
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 填充颜色
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this._fillColor;
+            }
+            ,function (value) {
+                if (!value || this._fillColor == value)
+                    return;
+                this._fillColor = value;
+                this.invalidateDisplayList();
+            }
+        );
+        d(p, "fillAlpha"
+            /**
+             * @language en_US
+             * Fill alpha
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 填充透明度,默认值为1。
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this.$fillAlpha;
+            }
+            ,function (value) {
+                if (this.$fillAlpha == value)
+                    return;
+                this.$fillAlpha = value;
+                this.invalidateDisplayList();
+            }
+        );
+        d(p, "strokeColor"
+            /**
+             * @language en_US
+             * The line's color inside the rect border. Caution: when the strokeWeight is 0, a line is not drawn
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 边框颜色,注意：当 strokeWeight 为 0 时，不显示边框。
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this.$strokeColor;
+            }
+            ,function (value) {
+                if (this.$strokeColor == value)
+                    return;
+                this.$strokeColor = value;
+                this.invalidateDisplayList();
+            }
+        );
+        d(p, "strokeAlpha"
+            /**
+             * @language en_US
+             * The line's alpha inside the rect border. Caution: when the strokeWeight is 0, a line is not drawn
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 边框透明度,注意：当 strokeWeight 为0时，不显示边框。
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this._strokeAlpha;
+            }
+            ,function (value) {
+                if (this._strokeAlpha == value)
+                    return;
+                this._strokeAlpha = value;
+                this.invalidateDisplayList();
+            }
+        );
+        d(p, "strokeWeight"
+            /**
+             * @language en_US
+             * The line's thickness inside the rect border. Caution: when the strokeWeight is 0, a line is not drawn
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 边框粗细(像素),注意：当 strokeWeight 为 0 时，不显示边框。
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this.$strokeWeight;
+            }
+            ,function (value) {
+                if (this.$strokeWeight == value)
+                    return;
+                this.$strokeWeight = value;
+                this.invalidateDisplayList();
+            }
+        );
+        d(p, "ellipseWidth"
+            /**
+             * @language en_US
+             * Width used to draw an ellipse with rounded corners (in pixels).
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 用于绘制圆角的椭圆的宽度(以像素为单位)
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this.$ellipseWidth;
+            }
+            ,function (value) {
+                if (this.$ellipseWidth == value)
+                    return;
+                this.$ellipseWidth = value;
+                this.invalidateDisplayList();
+            }
+        );
+        d(p, "ellipseHeight"
+            /**
+             * @language en_US
+             * Height used to draw an ellipse with rounded corners (in pixels). If no value is specified, the default value matches the value of the ellipseWidth parameter.
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            /**
+             * @language zh_CN
+             * 用于绘制圆角的椭圆的高度 (以像素为单位)。如果未指定值，则默认值与为 ellipseWidth 参数提供的值相匹配。
+             * @version Egret 2.5.5
+             * @version eui 1.0
+             * @platform Web,Native
+             */
+            ,function () {
+                return this.$ellipseHeight;
+            }
+            ,function (value) {
+                if (this.$ellipseHeight == value)
+                    return;
+                this.$ellipseHeight = value;
+                this.invalidateDisplayList();
+            }
+        );
+        /**
+         * @copy eui.UIComponent#updateDisplayList
+         *
+         * @version Egret 2.5.5
+         * @version eui 1.0
+         * @platform Web,Native
+         */
+        p.updateDisplayList = function (unscaledWidth, unscaledHeight) {
+            var g = this.graphics;
+            g.clear();
+            if (this.strokeWeight > 0) {
+                g.beginFill(this.strokeColor, this.strokeAlpha);
+            }
+            else {
+                g.beginFill(this.fillColor, this.fillAlpha);
+            }
+            if (this.ellipseWidth == 0) {
+                g.drawRect(0, 0, unscaledWidth, unscaledHeight);
+            }
+            else {
+                g.drawRoundRect(0, 0, unscaledWidth, unscaledHeight, this.ellipseWidth, 0);
+            }
+            g.endFill();
+            if (this.strokeWeight > 0) {
+                g.beginFill(this.fillColor, this.fillAlpha);
+                if (this.ellipseWidth == 0) {
+                    g.drawRect(this.$strokeWeight / 2, this.$strokeWeight / 2, unscaledWidth - this.$strokeWeight, unscaledHeight - this.$strokeWeight);
+                }
+                else {
+                    g.drawRoundRect(this.$strokeWeight / 2, this.$strokeWeight / 2, unscaledWidth - this.$strokeWeight, unscaledHeight - this.$strokeWeight, this.ellipseWidth, 0);
+                }
+                g.endFill();
+            }
+            this.$invalidateContentBounds();
+        };
+        return Rect;
+    })(eui.Component);
+    eui.Rect = Rect;
+    egret.registerClass(Rect,"eui.Rect");
 })(eui || (eui = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -12584,7 +13011,8 @@ var eui;
         p.onTouchMove = function (event) {
             var values = this.$Scroller;
             if (!values[5 /* touchMoved */]) {
-                if (Math.abs(values[3 /* touchStartX */] - event.$stageX) < Scroller.scrollThreshold && Math.abs(values[4 /* touchStartY */] - event.$stageY) < Scroller.scrollThreshold) {
+                if (Math.abs(values[3 /* touchStartX */] - event.$stageX) < Scroller.scrollThreshold &&
+                    Math.abs(values[4 /* touchStartY */] - event.$stageY) < Scroller.scrollThreshold) {
                     return;
                 }
                 values[5 /* touchMoved */] = true;
@@ -16465,7 +16893,8 @@ var eui;
                     }
                 }
                 if (this.isGet) {
-                    returnStr += indent1Str + "},\n" + indent1Str + "enumerable: true,\n" + indent1Str + "configurable: true\n" + indentStr + "});";
+                    returnStr += indent1Str + "},\n" + indent1Str + "enumerable: true,\n" +
+                        indent1Str + "configurable: true\n" + indentStr + "});";
                 }
                 else {
                     returnStr += indentStr + "};";
@@ -16699,11 +17128,6 @@ var eui;
 (function (eui) {
     var sys;
     (function (sys) {
-        /**
-         * @private
-         * EXML配置管理器实例
-         */
-        sys.exmlConfig;
         var exmlParserPool = [];
         var parsedClasses = {};
         var innerClassCount = 1;
@@ -16855,7 +17279,8 @@ var eui;
                     var length = children.length;
                     for (var i = 0; i < length; i++) {
                         var node = children[i];
-                        if (node.nodeType === 1 && node.namespace == sys.NS_W && node.localName == DECLARATIONS) {
+                        if (node.nodeType === 1 && node.namespace == sys.NS_W &&
+                            node.localName == DECLARATIONS) {
                             this.declarations = node;
                             break;
                         }
@@ -17412,7 +17837,8 @@ var eui;
                 else if (type == RECTANGLE) {
                     if (DEBUG) {
                         var rect = value.split(",");
-                        if (rect.length != 4 || isNaN(parseInt(rect[0])) || isNaN(parseInt(rect[1])) || isNaN(parseInt(rect[2])) || isNaN(parseInt(rect[3]))) {
+                        if (rect.length != 4 || isNaN(parseInt(rect[0])) || isNaN(parseInt(rect[1])) ||
+                            isNaN(parseInt(rect[2])) || isNaN(parseInt(rect[3]))) {
                             egret.$error(2016, this.currentClassName, toXMLString(node));
                         }
                     }
@@ -17626,7 +18052,8 @@ var eui;
                     var length = children.length;
                     for (var i = 0; i < length; i++) {
                         var item = children[i];
-                        if (item.nodeType == 1 && item.localName == "states") {
+                        if (item.nodeType == 1 &&
+                            item.localName == "states") {
                             item.namespace = sys.NS_W;
                             stateChildren = item.children;
                             break;
@@ -18312,12 +18739,8 @@ var EXML;
     var parsedClasses = {};
     var $prefixURL = "";
     Object.defineProperty(EXML, "prefixURL", {
-        get: function () {
-            return $prefixURL;
-        },
-        set: function (value) {
-            $prefixURL = value;
-        },
+        get: function () { return $prefixURL; },
+        set: function (value) { $prefixURL = value; },
         enumerable: true,
         configurable: true
     });
@@ -20063,7 +20486,8 @@ var eui;
             var done;
             do {
                 done = true;
-                var unused = spaceToDistribute - (spaceForChildren * totalPercent / 100);
+                var unused = spaceToDistribute -
+                    (spaceForChildren * totalPercent / 100);
                 if (unused > 0)
                     spaceToDistribute -= unused;
                 else
@@ -20504,6 +20928,7 @@ var eui;
             var oldElementSize;
             var needInvalidateSize = false;
             var elementSizeTable = this.elementSizeTable;
+            //对可见区域进行布局
             for (var i = this.startIndex; i <= endIndex; i++) {
                 var exceesHeight = 0;
                 layoutElement = (target.getVirtualElementAt(i));
@@ -20647,7 +21072,8 @@ var eui;
                 return false;
             }
             var numElements = target.numElements;
-            var contentWidth = this.getStartPosition(numElements - 1) + this.elementSizeTable[numElements - 1] + this.$paddingRight;
+            var contentWidth = this.getStartPosition(numElements - 1) +
+                this.elementSizeTable[numElements - 1] + this.$paddingRight;
             var minVisibleX = target.scrollH;
             if (minVisibleX > contentWidth - this.$paddingRight) {
                 this.startIndex = -1;
@@ -22532,6 +22958,7 @@ var eui;
             var oldElementSize;
             var needInvalidateSize = false;
             var elementSizeTable = this.elementSizeTable;
+            //对可见区域进行布局
             for (var i = this.startIndex; i <= endIndex; i++) {
                 var exceesWidth = 0;
                 layoutElement = (target.getVirtualElementAt(i));
@@ -22675,7 +23102,8 @@ var eui;
                 return false;
             }
             var numElements = target.numElements;
-            var contentHeight = this.getStartPosition(numElements - 1) + this.elementSizeTable[numElements - 1] + this.$paddingBottom;
+            var contentHeight = this.getStartPosition(numElements - 1) +
+                this.elementSizeTable[numElements - 1] + this.$paddingBottom;
             var minVisibleY = target.scrollV;
             if (minVisibleY > contentHeight - this.$paddingBottom) {
                 this.startIndex = -1;
@@ -22797,8 +23225,12 @@ var eui;
                     index = container.getChildIndex(relative) + 1;
                     break;
             }
-            if (index == -1)
+            if (index == -1) {
                 index = container.numChildren;
+            }
+            if (egret.is(container, "eui.Component")) {
+                container.$Component[8 /* skin */].$elementsContent.push(target);
+            }
             container.addChildAt(target, index);
         };
         /**
@@ -22815,6 +23247,13 @@ var eui;
                 return;
             if (target.$parent === container) {
                 container.removeChild(target);
+            }
+            if (egret.is(container, "eui.Component")) {
+                var arr = container.$Component[8 /* skin */].$elementsContent;
+                var idx = arr.indexOf(target);
+                if (idx > -1) {
+                    arr.splice(idx, 1);
+                }
             }
         };
         return AddItems;
@@ -23147,11 +23586,13 @@ var eui;
                 preferredX = Math.max(minX, Math.min(maxX, preferredX));
                 x = preferredX;
                 y = (h - b * x) * invD1;
-                if (minY <= y && y <= maxY && b * x + d1 * y >= 0) {
+                if (minY <= y && y <= maxY &&
+                    b * x + d1 * y >= 0) {
                     s = egret.Point.create(x, y);
                 }
                 y = (-h - b * x) * invD1;
-                if (minY <= y && y <= maxY && b * x + d1 * y < 0) {
+                if (minY <= y && y <= maxY &&
+                    b * x + d1 * y < 0) {
                     if (!s || transformSize(s.x, s.y, matrix).width > transformSize(x, y, matrix).width) {
                         egret.Point.release(s);
                         s = egret.Point.create(x, y);
@@ -23163,12 +23604,14 @@ var eui;
                 preferredY = Math.max(minY, Math.min(maxY, preferredY));
                 y = preferredY;
                 x = (h - d1 * y) * invB;
-                if (minX <= x && x <= maxX && b * x + d1 * y >= 0) {
+                if (minX <= x && x <= maxX &&
+                    b * x + d1 * y >= 0) {
                     if (!s || transformSize(s.x, s.y, matrix).width > transformSize(x, y, matrix).width)
                         s = egret.Point.create(x, y);
                 }
                 x = (-h - d1 * y) * invB;
-                if (minX <= x && x <= maxX && b * x + d1 * y < 0) {
+                if (minX <= x && x <= maxX &&
+                    b * x + d1 * y < 0) {
                     if (!s || transformSize(s.x, s.y, matrix).width > transformSize(x, y, matrix).width) {
                         egret.Point.release(s);
                         s = egret.Point.create(x, y);
@@ -23207,11 +23650,13 @@ var eui;
                 preferredX = Math.max(minX, Math.min(maxX, preferredX));
                 x = preferredX;
                 y = (w - a * x) * invC1;
-                if (minY <= y && y <= maxY && a * x + c1 * y >= 0) {
+                if (minY <= y && y <= maxY &&
+                    a * x + c1 * y >= 0) {
                     s = egret.Point.create(x, y);
                 }
                 y = (-w - a * x) * invC1;
-                if (minY <= y && y <= maxY && a * x + c1 * y < 0) {
+                if (minY <= y && y <= maxY &&
+                    a * x + c1 * y < 0) {
                     if (!s || transformSize(s.x, s.y, matrix).height > transformSize(x, y, matrix).height) {
                         egret.Point.release(s);
                         s = egret.Point.create(x, y);
@@ -23223,14 +23668,16 @@ var eui;
                 preferredY = Math.max(minY, Math.min(maxY, preferredY));
                 y = preferredY;
                 x = (w - c1 * y) * invA;
-                if (minX <= x && x <= maxX && a * x + c1 * y >= 0) {
+                if (minX <= x && x <= maxX &&
+                    a * x + c1 * y >= 0) {
                     if (!s || transformSize(s.x, s.y, matrix).height > transformSize(x, y, matrix).height) {
                         egret.Point.release(s);
                         s = egret.Point.create(x, y);
                     }
                 }
                 x = (-w - c1 * y) * invA;
-                if (minX <= x && x <= maxX && a * x + c1 * y < 0) {
+                if (minX <= x && x <= maxX &&
+                    a * x + c1 * y < 0) {
                     if (!s || transformSize(s.x, s.y, matrix).height > transformSize(x, y, matrix).height) {
                         egret.Point.release(s);
                         s = egret.Point.create(x, y);
@@ -23326,16 +23773,28 @@ var eui;
             h *= invDet;
             var s;
             s = solveSystem(a, c1, b, d1, w, h);
-            if (s && minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY && a * s.x + c1 * s.x >= 0 && b * s.x + d1 * s.y >= 0)
+            if (s &&
+                minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY &&
+                a * s.x + c1 * s.x >= 0 &&
+                b * s.x + d1 * s.y >= 0)
                 return s;
             s = solveSystem(a, c1, b, d1, w, -h);
-            if (s && minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY && a * s.x + c1 * s.x >= 0 && b * s.x + d1 * s.y < 0)
+            if (s &&
+                minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY &&
+                a * s.x + c1 * s.x >= 0 &&
+                b * s.x + d1 * s.y < 0)
                 return s;
             s = solveSystem(a, c1, b, d1, -w, h);
-            if (s && minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY && a * s.x + c1 * s.x < 0 && b * s.x + d1 * s.y >= 0)
+            if (s &&
+                minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY &&
+                a * s.x + c1 * s.x < 0 &&
+                b * s.x + d1 * s.y >= 0)
                 return s;
             s = solveSystem(a, c1, b, d1, -w, -h);
-            if (s && minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY && a * s.x + c1 * s.x < 0 && b * s.x + d1 * s.y < 0)
+            if (s &&
+                minX <= s.x && s.x <= maxX && minY <= s.y && s.y <= maxY &&
+                a * s.x + c1 * s.x < 0 &&
+                b * s.x + d1 * s.y < 0)
                 return s;
             egret.Point.release(s);
             return null;

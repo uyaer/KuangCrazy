@@ -1033,7 +1033,7 @@ var egret;
                 bufferSource.onended = this.onPlayEnd;
                 this._startTime = Date.now();
                 this.gain.gain.value = this._volume;
-                bufferSource.start(0, this._currentTime);
+                bufferSource.start(0, this.$startTime);
                 this._currentTime = 0;
             };
             p.stop = function () {
@@ -1240,7 +1240,10 @@ var egret;
                 video.style.top = "0px";
                 video.style.left = "0px";
                 video.height = this.heightSet;
-                video.width = 0; //为了解决视频返回挤压页面内容
+                video.width = this.widthSet;
+                setTimeout(function () {
+                    video.width = 0;
+                }, 1000);
                 this.checkFullScreen(this._fullscreen);
             };
             p.checkFullScreen = function (playFullScreen) {
@@ -1249,9 +1252,9 @@ var egret;
                     if (video.parentElement == null) {
                         video.removeAttribute("webkit-playsinline");
                         document.body.appendChild(video);
-                        this.goFullscreen();
-                        egret.stopTick(this.markDirty, this);
                     }
+                    egret.stopTick(this.markDirty, this);
+                    this.goFullscreen();
                 }
                 else {
                     if (video.parentElement != null) {
@@ -1427,7 +1430,7 @@ var egret;
                     if (!this._bitmapData) {
                         this.video.width = this.video.videoWidth;
                         this.video.height = this.video.videoHeight;
-                        this._bitmapData = egret.web['toBitmapData'](this.video);
+                        this._bitmapData = egret.$toBitmapData(this.video);
                     }
                     return this._bitmapData;
                 }
@@ -1829,7 +1832,11 @@ var egret;
              * @param url 要加载的图像文件的地址。
              */
             p.load = function (url) {
-                if (web.Html5Capatibility._canUseBlob && url.indexOf("wxLocalResource:") != 0 && url.indexOf("data:") != 0 && url.indexOf("http:") != 0 && url.indexOf("https:") != 0) {
+                if (web.Html5Capatibility._canUseBlob
+                    && url.indexOf("wxLocalResource:") != 0 //微信专用不能使用 blob
+                    && url.indexOf("data:") != 0
+                    && url.indexOf("http:") != 0
+                    && url.indexOf("https:") != 0) {
                     var request = this.request;
                     if (!request) {
                         request = this.request = new egret.web.WebHttpRequest();
@@ -1887,7 +1894,7 @@ var egret;
                 if (!image) {
                     return;
                 }
-                this.data = web.toBitmapData(image);
+                this.data = egret.$toBitmapData(image);
                 var self = this;
                 window.setTimeout(function () {
                     self.dispatchEventWith(egret.Event.COMPLETE);
@@ -2669,7 +2676,7 @@ var egret;
                 var context = canvas.getContext("2d");
                 canvas["renderContext"] = context;
                 context["surface"] = canvas;
-                web.toBitmapData(canvas);
+                egret.$toBitmapData(canvas);
                 if (egret.sys.isUndefined(context["imageSmoothingEnabled"])) {
                     var keys = ["webkitImageSmoothingEnabled", "mozImageSmoothingEnabled", "msImageSmoothingEnabled"];
                     for (var i = keys.length - 1; i >= 0; i--) {
@@ -2789,14 +2796,17 @@ var egret;
                 var _this = this;
                 if (window.navigator.msPointerEnabled) {
                     this.canvas.addEventListener("MSPointerDown", function (event) {
+                        event.identifier = event.pointerId;
                         _this.onTouchBegin(event);
                         _this.prevent(event);
                     }, false);
                     this.canvas.addEventListener("MSPointerMove", function (event) {
+                        event.identifier = event.pointerId;
                         _this.onTouchMove(event);
                         _this.prevent(event);
                     }, false);
                     this.canvas.addEventListener("MSPointerUp", function (event) {
+                        event.identifier = event.pointerId;
                         _this.onTouchEnd(event);
                         _this.prevent(event);
                     }, false);
@@ -3380,7 +3390,11 @@ var egret;
          * 启动心跳计时器。
          */
         function startTicker(ticker) {
-            var requestAnimationFrame = window["requestAnimationFrame"] || window["webkitRequestAnimationFrame"] || window["mozRequestAnimationFrame"] || window["oRequestAnimationFrame"] || window["msRequestAnimationFrame"];
+            var requestAnimationFrame = window["requestAnimationFrame"] ||
+                window["webkitRequestAnimationFrame"] ||
+                window["mozRequestAnimationFrame"] ||
+                window["oRequestAnimationFrame"] ||
+                window["msRequestAnimationFrame"];
             if (!requestAnimationFrame) {
                 requestAnimationFrame = function (callback) {
                     return window.setTimeout(callback, 1000 / 60);
@@ -3470,15 +3484,6 @@ var egret;
         egret.registerClass(HTMLImageElement, className);
         egret.registerClass(HTMLCanvasElement, className);
         egret.registerClass(HTMLVideoElement, className);
-        /**
-         * @private
-         * 转换 Image，Canvas，Video 为 Egret 框架内使用的 BitmapData 对象。
-         */
-        function toBitmapData(data) {
-            data["hashCode"] = data["$hashCode"] = egret.$hashCount++;
-            return data;
-        }
-        web.toBitmapData = toBitmapData;
     })(web = egret.web || (egret.web = {}));
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
@@ -3746,6 +3751,7 @@ var egret;
                 style = container.style;
                 style.overflow = "hidden";
                 style.position = "relative";
+                style["webkitTransform"] = "translateZ(0)";
             };
             /**
              * @private
@@ -3760,7 +3766,8 @@ var egret;
                 var shouldRotate = false;
                 var orientation = this.stage.$orientation;
                 if (orientation != egret.OrientationMode.AUTO) {
-                    shouldRotate = orientation != egret.OrientationMode.PORTRAIT && screenRect.height > screenRect.width || orientation == egret.OrientationMode.PORTRAIT && screenRect.width > screenRect.height;
+                    shouldRotate = orientation != egret.OrientationMode.PORTRAIT && screenRect.height > screenRect.width
+                        || orientation == egret.OrientationMode.PORTRAIT && screenRect.width > screenRect.height;
                 }
                 var screenWidth = shouldRotate ? screenRect.height : screenRect.width;
                 var screenHeight = shouldRotate ? screenRect.width : screenRect.height;
@@ -3801,6 +3808,12 @@ var egret;
                 var scalex = displayWidth / stageWidth, scaley = displayHeight / stageHeight;
                 this.webTouchHandler.updateScaleMode(scalex, scaley, rotation);
                 this.webInput.$updateSize();
+            };
+            p.setContentSize = function (width, height) {
+                var option = this.playerOption;
+                option.contentWidth = width;
+                option.contentHeight = height;
+                this.updateScreenSize();
             };
             /**
              * @private

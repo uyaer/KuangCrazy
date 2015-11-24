@@ -13,20 +13,35 @@ class MainScene extends eui.Component {
         this.initSoil();
         this.initGem();
 
+        this.onCoinChange();
+        this.onAddCoinRateChange();
+
         UIUtils.addButtonScaleEffects(this);
 
         this.touchEnabled = true;
         this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         EventManager.instance.addEvent(EventName.PICK_HURT_OK, this.pickHurtOk, this);
         EventManager.instance.addEvent(EventName.MAP_CHANGE, this.changeMapJpg, this);
+        EventManager.instance.addEvent(EventName.COIN_CHANGE, this.onCoinChange, this);
+        EventManager.instance.addEvent(EventName.ADD_COIN_RATE_CHANGE, this.onAddCoinRateChange, this);
     }
 
     private mapBg:eui.Image;
     private currMapIndex:number = 1;
+    private coinTF:eui.BitmapLabel;
+    private coinAddTF:eui.BitmapLabel;
+
+    private onCoinChange() {
+        this.coinTF.text = DataManager.instance.coin + "";
+    }
+
+    private onAddCoinRateChange() {
+        //this.coinAddTF.text = DataManager.instance.coin;
+    }
 
     private changeMapJpg(e:egret.Event) {
         this.currMapIndex++;
-        if (this.currMapIndex > 3) { //TODO 根据玩家开放的数据进行判断
+        if (this.currMapIndex > DataManager.instance.hasGetedMapIndex) { // 根据玩家开放的数据进行判断
             this.currMapIndex = 1;
         }
         this.mapBg.source = "soil_0" + this.currMapIndex + "_png";
@@ -44,11 +59,11 @@ class MainScene extends eui.Component {
         var y:number = e.localY;
         if (Util.isRang(y, 135, Const.WIN_H - 241)) {
             this.picker.pick();
-        }else{
+        } else {
             var btn:eui.Button = <eui.Button>e.target;
-            switch (btn){
+            switch (btn) {
                 case this.shopBtn:
-                    UIManager.instance.showPanel(PanelName.SHOP,btn.localToGlobal(btn.width/2,btn.height/2));
+                    UIManager.instance.showPanel(PanelName.SHOP, btn.localToGlobal(btn.width / 2, btn.height / 2));
                     break;
             }
         }

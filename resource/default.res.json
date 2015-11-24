@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,soil_damage_1_png,soil_damage_2_png,soil_damage_3_png,soil_damage_4_png,soil_damage_5_png,ui_json,fire_json,fire_png,achievement_ogg,buy_ogg,crack_01_ogg,crack_02_ogg,crack_03_ogg,crack_04_ogg,crack_05_ogg,fireon_ogg,got_soil_ogg,pick_hit_ogg,soil_01_hit_ogg,soil_02_hit_ogg,soil_03_hit_ogg,soil_04_hit_ogg,soil_05_hit_ogg,soil_06_hit_ogg,soil_07_hit_ogg,soil_08_hit_ogg,soil_09_hit_ogg,swing_ogg,soil_01_png,fontRed_fnt,fontWhite_fnt,fontGreen_fnt",
+		"keys":"checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,soil_damage_1_png,soil_damage_2_png,soil_damage_3_png,soil_damage_4_png,soil_damage_5_png,ui_json,fire_json,fire_png,achievement_ogg,buy_ogg,crack_01_ogg,crack_02_ogg,crack_03_ogg,crack_04_ogg,crack_05_ogg,fireon_ogg,got_soil_ogg,pick_hit_ogg,soil_01_hit_ogg,soil_02_hit_ogg,soil_03_hit_ogg,soil_04_hit_ogg,soil_05_hit_ogg,soil_06_hit_ogg,soil_07_hit_ogg,soil_08_hit_ogg,soil_09_hit_ogg,swing_ogg,soil_01_png,fontRed_fnt,fontWhite_fnt,fontGreen_fnt,data_json",
 		"name":"preload"
 	}],
 	"resources":[
@@ -320,5 +320,10 @@
 		"name":"fontGreen_fnt",
 		"type":"font",
 		"url":"assets/fonts/fontGreen.fnt"
+	},
+	{
+		"name":"data_json",
+		"type":"json",
+		"url":"config/data.json"
 	}]
 }

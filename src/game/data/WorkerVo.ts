@@ -9,7 +9,7 @@ class WorkerVo {
     /**
      * 等级
      */
-    public level:number;
+    public level:number = 0;
 
     private _data:Object;
 
@@ -17,25 +17,22 @@ class WorkerVo {
         this.id = id;
         this._data = DataManager.instance.getWorkerDataById(id);
 
-        this._costCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["costCoinBase"], this._data["costCoinRate"]);
-        this._costSoilMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["costSoilBase"], this._data["costSoilRate"]);
-        this._costGemMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["costGemBase"], this._data["costGemRate"]);
-        this._outCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["outCoinBase"], this._data["outCoinBase"]);
-        this._outSoilMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["outSoilBase"], this._data["outSoilBase"]);
+        this._costCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel, 1, this._data["costCoinBase"], this._data["costCoinRate"]);
+        this._costSoilMap = DataManager.instance.getGrowDataArr(this.maxLevel, 1, this._data["costSoilBase"], this._data["costSoilRate"], true);
+        this._costGemMap = DataManager.instance.getGrowDataArr(this.maxLevel, 1, this._data["costGemBase"], this._data["costGemRate"], true);
+        this._outCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel, 1, this._data["outCoinBase"], this._data["outCoinRate"], true);
     }
 
     private _costCoinMap:HashMap<number,number>;
     private _costSoilMap:HashMap<number,number>;
     private _costGemMap:HashMap<number,number>;
     private _outCoinMap:HashMap<number,number>;
-    private _outSoilMap:HashMap<number,number>;
 
     /**
-     * 最小等级
-     * @returns {number}
+     * 名称
      */
-    public get minLevel() {
-        return this._data["minLevel"];
+    public get name() {
+        return this._data["name"];
     }
 
     /**
@@ -51,7 +48,7 @@ class WorkerVo {
      * @returns {number}
      */
     public get costCoin() {
-        return this._costCoinMap.get(this.level);
+        return Math.min(this._costCoinMap.get(this.level + 1), this._data["costCoinMax"]);
     }
 
     /**
@@ -59,7 +56,7 @@ class WorkerVo {
      * @returns {number}
      */
     public get costSoil() {
-        return this._costSoilMap.get(this.level);
+        return this._costSoilMap.get(this.level || 1);
     }
 
     /**
@@ -75,7 +72,7 @@ class WorkerVo {
      * @returns {number}
      */
     public get costGem() {
-        return this._costGemMap.get(this.level);
+        return this._costGemMap.get(this.level || 1);
     }
 
     /**
@@ -91,7 +88,7 @@ class WorkerVo {
      * @returns {number}
      */
     public get outCoin() {
-        return this._outCoinMap.get(this.level);
+        return this._outCoinMap.get(this.level || 1);
     }
 
     /**
@@ -106,7 +103,7 @@ class WorkerVo {
      * 获取产生泥土的类型
      * @returns {number}
      */
-    public get outSoilType(){
+    public get outSoilType() {
         return this._data["outSoilType"];
     }
 }

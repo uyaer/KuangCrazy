@@ -51,7 +51,11 @@ class ShopPanel extends PanelBase {
         }
     }
 
-    private changeShopList(index:number) {
+    private oldIndex:number = -1;
+
+    private changeShopList(index:number, force:boolean = false) {
+        if (this.oldIndex == index && !force)return;
+        this.oldIndex = index;
         this.list.useVirtualLayout = true;
         this.list.itemRenderer = this.itemRenderArr[index];
         var arr;
@@ -60,5 +64,27 @@ class ShopPanel extends PanelBase {
         else if (index == 2)arr = DataManager.instance.getShopMapDataArr();
         else if (index == 3)arr = DataManager.instance.getShopBoxDataArr();
         this.list.dataProvider = new eui.ArrayCollection(arr);
+        if (force) {
+            this.list.validateNow();
+            if (this.list.contentHeight > this.list.height) {
+                this.list.scrollV = this.list.contentHeight - this.list.height;
+            }
+        }
+    }
+
+    private onPickLevelUp() {
+        this.changeShopList(this.oldIndex, true);
+    }
+
+    public onShow() {
+        super.onShow();
+
+        EventManager.instance.addEvent(EventName.PICK_LEVEL_UP, this.onPickLevelUp, this);
+    }
+
+    public onHide() {
+        super.onHide();
+
+        EventManager.instance.removeEvent(EventName.PICK_LEVEL_UP, this.onPickLevelUp, this);
     }
 }

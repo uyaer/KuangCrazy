@@ -25,9 +25,9 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:BitmapLabel text="POWER/S" font="fontWhite_fnt" horizontalCenter="2.5" bottom="83"/>
-	<e:BitmapLabel id="powerAddTF" text="0" font="fontWhite_fnt" horizontalCenter="-0.5" bottom="35"/>
-	<e:BitmapLabel horizontalCenter="0" font="fontWhite_fnt" text="POWER:" x="10" top="16"/>
-	<e:BitmapLabel id="pwerTF" horizontalCenter="0" top="56" text="0" font="fontWhite_fnt" x="20" y="10"/>
+	<e:BitmapLabel text="COIN/S" font="fontWhite_fnt" horizontalCenter="2.5" bottom="83"/>
+	<e:BitmapLabel id="coinAddTF" text="0" font="fontWhite_fnt" horizontalCenter="-0.5" bottom="35"/>
+	<e:BitmapLabel horizontalCenter="0" font="fontWhite_fnt" text="COIN:" x="10" top="16"/>
+	<e:BitmapLabel id="coinTF" horizontalCenter="0" top="56" text="0" font="fontWhite_fnt" x="20" y="10"/>
 	<e:Group width="640" height="71" x="0" bottom="146"/>
 </e:Skin>

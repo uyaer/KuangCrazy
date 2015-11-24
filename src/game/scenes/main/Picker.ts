@@ -30,6 +30,10 @@ class Picker extends eui.Group {
         this.height = this.sp.height;
     }
 
+    public changePickSkin() {
+        this.sp.source = "pick_" + (DataManager.instance.hasGetedPickMaxType - 1) + "_png";
+    }
+
     /**
      * 挖掘
      */

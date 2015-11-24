@@ -107,7 +107,6 @@ class Main extends eui.UILayer {
      * Resource group loading failed
      */
     private onResourceLoadError(event:RES.ResourceEvent):void {
-        //TODO
         console.warn("Group:" + event.groupName + " has failed to load");
         //忽略加载失败的项目
         //ignore loading failed projects
@@ -133,6 +132,7 @@ class Main extends eui.UILayer {
         Const.WIN_W = this.stage.stageWidth;
         Const.WIN_H = this.stage.stageHeight;
 
+        DataManager.instance.init();
         GameLayerManager.instance.init(this);
 
         var scene = new MainScene();

@@ -22,6 +22,7 @@ var game_file_list = [
 	"bin-debug/common/ui/UIManager.js",
 	"bin-debug/game/data/DataManager.js",
 	"bin-debug/game/data/PickerVo.js",
+	"bin-debug/game/data/Player.js",
 	"bin-debug/game/data/WorkerVo.js",
 	"bin-debug/game/panel/shop/ShopPanel.js",
 	"bin-debug/game/panel/shop/box/BoxItemRenderer.js",

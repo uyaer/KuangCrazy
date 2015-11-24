@@ -79,12 +79,36 @@ class DataManager {
     public MAP_MAX:number = 9;
 
     /**
+     * 初始化
+     */
+    public init() {
+        var data = RES.getRes("data_json");
+        //铁锤
+        var pickTable = data["pick"];
+        for (var i = 0; i < pickTable.length; i++) {
+            var pickVo:PickerVo = new PickerVo(pickTable[i]["id"]);
+            this.pickMap.set(pickVo.id, pickVo);
+        }
+        //工人
+        var workerTable = data["worker"];
+        for (var i = 0; i < workerTable.length; i++) {
+            var workerVo:WorkerVo = new WorkerVo(workerTable[i]["id"]);
+            this.workerMap.set(workerVo.id, workerVo);
+        }
+    }
+
+    /**
      * 保存数据
      * 判断是否是游客账户
      */
     public save() {
 
 
+    }
+
+    public refreshPickCoin() {
+        var num = this.pickMap.get(this.hasGetedPickMaxType).outCoin;
+        Player.instance.pickOutCoinRate = num;
     }
 
     /**
@@ -99,7 +123,12 @@ class DataManager {
      * @returns {PickerVo[]}
      */
     public getShopPickDataArr():PickerVo[] {
-        var lv = Math.min(this.PICK_MAX, this.hasGetedPickMaxType + 1);
+        var lv = this.hasGetedPickMaxType;
+        var vo:PickerVo = this.pickMap.get(lv);
+        if (vo.maxLevel == this.pickerLevel) {
+            lv++;
+        }
+        lv = Math.min(this.PICK_MAX, lv);
         var arr:PickerVo[] = [];
         for (var i = 1; i <= lv; i++) {
             arr.push(this.pickMap.get(i));
@@ -174,16 +203,37 @@ class DataManager {
      * @param rate
      * @returns {HashMap<number, number>}
      */
-    public getGrowDataArr(maxLv:number, startLv:number, base:number, rate:number):HashMap<number,number> {
+    public getGrowDataArr(maxLv:number, startLv:number, base:number, rate:number, isAddMode:boolean = false):HashMap<number,number> {
         var cost = base;
         var result:HashMap<number,number> = new HashMap<number,number>();
         var lv = maxLv;
         var multi = rate;
         result.set(startLv, cost);
         for (var i = startLv + 1; i <= lv; i++) {
-            cost *= multi;
+            if (isAddMode) {
+                cost += multi;
+            } else {
+                cost *= multi;
+            }
+            cost = Math.floor(cost);
             result.set(i, cost);
         }
         return result;
+    }
+
+    /**
+     * 铁锤等级增加
+     */
+    public pickLevelUp() {
+        var vo:PickerVo = this.pickMap.get(this.hasGetedPickMaxType);
+        if (vo.isPass) {
+            var nextVo:PickerVo = this.pickMap.get(this.hasGetedPickMaxType + 1);
+            if (nextVo) {
+                this.hasGetedPickMaxType++;
+            }
+        } else {
+            this.pickerLevel++;
+        }
+        EventManager.instance.dispatch(EventName.PICK_LEVEL_UP);
     }
 }

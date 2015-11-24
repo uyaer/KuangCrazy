@@ -5,7 +5,7 @@ class Util {
      * @param min
      * @param max
      */
-    public static  rang(min:number, max:number):number {
+    public static rang(min:number, max:number):number {
         return Math.round(Math.random() * (max - min) + min);
     }
 
@@ -32,37 +32,6 @@ class Util {
     }
 
     /**
-     * 修复movieclip bug
-     * @param fac
-     */
-    public static layoutMovieClip(fac:egret.MovieClipDataFactory) {
-        var mcList:any = fac.mcDataSet.mc;
-        for (var key in mcList) {
-            var frames:any = mcList[key].frames;
-            var minX:number = 100000;
-            var minY:number = 100000;
-            for (var i = 0; i < frames.length; i++) {
-                if (frames[i].x < minX)minX = frames[i].x;
-                if (frames[i].y < minY)minY = frames[i].y;
-            }
-            for (var i = 0; i < frames.length; i++) {
-                frames[i].x -= minX;
-                frames[i].y -= minY;
-            }
-        }
-    }
-
-    /**
-     * 返回mc的偏移值
-     * @param mc
-     * @returns {egret.Point}
-     */
-    public static getMovieClipOffset(mc:egret.MovieClip):egret.Point {
-        var obj = mc.movieClipData.getKeyFrameData(1);
-        return new egret.Point(obj.x + mc.width / 2, obj.y + mc.height / 2);
-    }
-
-    /**
      * 角度转化弧度
      * @param val
      */
@@ -78,4 +47,23 @@ class Util {
         return val / Math.PI * 180;
     }
 
+    /**
+     * 返回大数据的显示方式
+     * @param num
+     * @returns {string}
+     */
+    static getBigNumberShow(num:number):string {
+        if (num < 1000) {
+            return num + "";
+        } else if (num < 10000) {
+            num /= 1000;
+            return num.toFixed(2) + " K";
+        } else if (num < 10000000) {
+            num /= 10000;
+            return num.toFixed(2) + " W";
+        } else {
+            num /= 10000000;
+            return num.toFixed(2) + " KW";
+        }
+    }
 }

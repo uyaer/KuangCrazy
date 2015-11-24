@@ -9,7 +9,9 @@ class PickerVo {
     /**
      * 等级
      */
-    public level:number;
+    public get level(){
+        return Math.min(this.maxLevel,DataManager.instance.pickerLevel);
+    }
 
     private _data:Object;
 
@@ -17,9 +19,9 @@ class PickerVo {
         this.id = id;
         this._data = DataManager.instance.getPickDataById(id);
 
-        this._costCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel,this.minLevel,this._data["costCoinBase"],this._data["costCoinRate"]);
-        this._costGemMap = DataManager.instance.getGrowDataArr(this.maxLevel,this.minLevel,this._data["costGemBase"],this._data["costGemRate"]);
-        this._outCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel,this.minLevel,this._data["outCoinBase"],this._data["outCoinRate"]);
+        this._costCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["costCoinBase"], this._data["costCoinRate"]);
+        this._costGemMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["costGemBase"], this._data["costGemRate"],true);
+        this._outCoinMap = DataManager.instance.getGrowDataArr(this.maxLevel, this.minLevel, this._data["outCoinBase"], this._data["outCoinRate"],true);
     }
 
     private _costCoinMap:HashMap<number,number>;
@@ -30,14 +32,15 @@ class PickerVo {
      * 最小等级
      * @returns {number}
      */
-    public get minLevel(){
+    public get minLevel() {
         return this._data["minLevel"];
     }
+
     /**
      * 最大等级
      * @returns {number}
      */
-    public get maxLevel(){
+    public get maxLevel() {
         return this._data["maxLevel"];
     }
 
@@ -61,7 +64,7 @@ class PickerVo {
      * 消耗宝石的种类
      * @returns {number}
      */
-    public get costGemType(){
+    public get costGemType() {
         return this._data["costGemType"];
     }
 
@@ -72,11 +75,20 @@ class PickerVo {
     public get outCoin() {
         return this._outCoinMap.get(this.level);
     }
+
     /**
      * 获得单次泥土数量上限
      * @returns {number}
      */
     public get outSoilMax() {
         return 1 + Math.floor(this.level / 10);
+    }
+
+    /**
+     * 是否已经完全获得了
+     * @returns {boolean}
+     */
+    public get isPass() {
+        return DataManager.instance.pickerLevel >= this.maxLevel;
     }
 }
