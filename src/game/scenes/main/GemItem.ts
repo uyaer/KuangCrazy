@@ -20,4 +20,9 @@ class GemItem extends eui.Component {
         this.iconSp.source = "rubies_" + this.type + "_png";
         this.numTF.text = "0";
     }
+
+    public updateView() {
+        var num = DataManager.instance.gemMap.get(this.type) || 0;
+        this.numTF.text = num + "";
+    }
 }

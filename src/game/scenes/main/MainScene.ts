@@ -45,10 +45,27 @@ class MainScene extends eui.Component {
             this.currMapIndex = 1;
         }
         this.mapBg.source = "soil_0" + this.currMapIndex + "_png";
+        //更新宝石
+        var num = DataManager.instance.hasGetedPickMaxType;
+        var type = Math.floor(this.currMapIndex-1 / 2)+1;
+        for (var i = 0; i < num; i++) {
+            this.addChild(HurtGem.getGem(type));
+        }
+        var hasNum:number = DataManager.instance.gemMap.get(type) || 0;
+        DataManager.instance.gemMap.set(type, hasNum + num);
+        egret.setTimeout(this.updateGemView, this, 1350);
     }
 
     private pickHurtOk(e:egret.Event) {
         this.hurt.play();
+        var num:number = DataManager.instance.currPicker.outSoilMax;
+        for (var i = 0; i < num; i++) {
+            this.addChild(HurtSoil.getSoil(this.currMapIndex));
+        }
+        var hasNum:number = DataManager.instance.soilMap.get(this.currMapIndex) || 0;
+        DataManager.instance.soilMap.set(this.currMapIndex, hasNum + num);
+
+        egret.setTimeout(this.updateSoilView, this, 1350);
     }
 
     private shopBtn:eui.Button;
@@ -59,6 +76,9 @@ class MainScene extends eui.Component {
         var y:number = e.localY;
         if (Util.isRang(y, 135, Const.WIN_H - 241)) {
             this.picker.pick();
+            var pickNum = Player.instance.pickOutCoinRate;
+            this.addChild(HurtLabel.getLabel("+" + pickNum));
+            DataManager.instance.coin += pickNum;
         } else {
             var btn:eui.Button = <eui.Button>e.target;
             switch (btn) {
@@ -111,6 +131,22 @@ class MainScene extends eui.Component {
             item.y = 155 + i * 55;
             this.addChild(item);
             this.gemItemArr.push(item);
+        }
+    }
+
+    public updateSoilView() {
+        var len = this.soilItemArr.length;
+        for (var i = 0; i < len; i++) {
+            var item = this.soilItemArr[i];
+            item.updateView()
+        }
+    }
+
+    public updateGemView() {
+        var len = this.gemItemArr.length;
+        for (var i = 0; i < len; i++) {
+            var item = this.gemItemArr[i];
+            item.updateView();
         }
     }
 }

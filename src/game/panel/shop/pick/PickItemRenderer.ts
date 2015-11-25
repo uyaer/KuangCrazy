@@ -27,7 +27,6 @@ class PickItemRenderer extends eui.ItemRenderer {
         DataManager.instance.coin -= vo.costCoin;
         DataManager.instance.gemMap.set(vo.costGemType, gemNum - vo.costGem);
         DataManager.instance.pickLevelUp();
-        EventManager.instance.dispatch(EventName.COIN_CHANGE);
         EventManager.instance.dispatch(EventName.GEM_CHANGE);
     }
 

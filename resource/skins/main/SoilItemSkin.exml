@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="SoilItemSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="iconSp" source="box_soil_01_png" width="45" height="45" x="0" y="0"/>
-	<e:BitmapLabel id="numTF" x="53" y="1" font="fontWhite_fnt" text="12345679"/>
+	<e:Image id="iconSp" width="45" height="45" x="0" y="0" source="box_soil_01_png"/>
+	<e:BitmapLabel id="numTF" x="53" y="7" font="fontWhite_fnt" text="12345679"/>
 </e:Skin>

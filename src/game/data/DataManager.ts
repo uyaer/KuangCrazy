@@ -12,7 +12,14 @@ class DataManager {
      * 金币数量
      * @type {number}
      */
-    public coin:number = 0;
+    private _coin:number = 0;
+    public get coin(){
+        return this._coin;
+    }
+    public set coin(val:number){
+        this._coin = val;
+        EventManager.instance.dispatch(EventName.COIN_CHANGE);
+    }
     /**
      * 每秒金币增加数量
      * @type {number}
@@ -235,5 +242,13 @@ class DataManager {
             this.pickerLevel++;
         }
         EventManager.instance.dispatch(EventName.PICK_LEVEL_UP);
+    }
+
+    /**
+     * 当前的铁锤
+     * @returns {PickerVo}
+     */
+    public get currPicker():PickerVo{
+        return this.pickMap.get(this.hasGetedPickMaxType);
     }
 }

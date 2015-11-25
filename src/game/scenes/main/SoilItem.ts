@@ -19,4 +19,9 @@ class SoilItem extends eui.Component {
         this.iconSp.source = "box_soil_0" + this.type + "_png";
         this.numTF.text = "0";
     }
+
+    public updateView() {
+        var num = DataManager.instance.soilMap.get(this.type) || 0;
+        this.numTF.text = num + "";
+    }
 }

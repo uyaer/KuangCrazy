@@ -5,8 +5,12 @@ class Util {
      * @param min
      * @param max
      */
-    public static rang(min:number, max:number):number {
+    public static rangInt(min:number, max:number):number {
         return Math.round(Math.random() * (max - min) + min);
+    }
+
+    public static rangFloat(min:number, max:number):number {
+        return Math.random() * (max - min) + min;
     }
 
     /**
